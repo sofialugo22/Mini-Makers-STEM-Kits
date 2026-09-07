@@ -1,0 +1,263 @@
+/* ============================================
+   1. VARIABLES
+   CSS custom properties (variables) let us name
+   a color/value once and reuse it everywhere.
+   If you want a different green later, you only
+   change it in ONE place instead of 20.
+   ============================================ */
+:root {
+  --mint-bg: #b9f2dd;       /* page background */
+  --teal-dark: #0f8f6f;     /* headline text */
+  --teal-button: #4fb99a;   /* button background */
+  --teal-button-hover: #3fa189;
+  --text-dark: #1a1a1a;     /* body text, near-black */
+  --white: #ffffff;
+}
+
+/* ============================================
+   2. RESET
+   Browsers add their own default spacing to
+   <body>, headings, etc. This wipes that out so
+   our own spacing rules are the only ones in play.
+   ============================================ */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* padding/border no longer add to an element's width */
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100vh;        /* body is always at least the full screen height */
+  display: flex;
+  flex-direction: column;    /* stack nav, main content, footer vertically */
+  font-family: 'Courier New', Courier, monospace; /* the blocky typewriter look in the mockup */
+  font-size: 16px;       /* the base size everything else scales from */
+  color: var(--text-dark);
+  background-color: var(--mint-bg);
+  line-height: 1.6;
+}
+
+/* Everything between the nav and footer grows to fill leftover space,
+   which is what pushes the footer down to the bottom of the screen. */
+main {
+  flex: 1;
+}
+
+/* ============================================
+   3. NAV BAR (top of every page)
+   ============================================ */
+.navbar {
+  display: flex;                    /* lays children out in a row */
+  justify-content: space-between;   /* logo on the left, links on the right */
+  align-items: center;              /* vertically centers everything */
+  padding: 20px 40px;
+}
+
+.navbar .logo {
+  font-weight: bold;
+  font-size: 1.05rem;
+  letter-spacing: 0.5px;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 28px;           /* space between each link, no manual margins needed */
+  list-style: none;    /* removes the bullet points from the <ul> */
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-dark);
+  font-size: 1rem;
+}
+
+.nav-links a:hover {
+  text-decoration: underline;
+}
+
+/* the "Contact Us" nav link is styled like a button */
+.nav-cta {
+  background-color: var(--teal-button);
+  color: var(--white) !important;
+  padding: 6px 14px;
+  border-radius: 6px;
+}
+
+/* ============================================
+   4. GENERIC BUTTON
+   Used for "Explore Kits", "Contact Us", etc.
+   ============================================ */
+.btn {
+  display: inline-block;
+  background-color: var(--teal-button);
+  color: var(--white);
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 1.05rem;
+  padding: 12px 28px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease; /* smooth color change on hover */
+}
+
+.btn:hover {
+  background-color: var(--teal-button-hover);
+}
+
+/* ============================================
+   5. PAGE HERO (the big title block near the top)
+   ============================================ */
+.hero {
+  text-align: center;
+  padding: 50px 20px 50px;
+}
+
+.hero h1 {
+  /* clamp(MIN, PREFERRED, MAX) — never smaller than 2.25rem,
+     never bigger than 4rem, scales with viewport width between. */
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  color: var(--teal-dark);
+  margin-bottom: 20px;
+  line-height: 1.1;
+}
+
+.hero .subtitle {
+  font-size: clamp(1.25rem, 2vw, 1.3rem);
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.hero p {
+  font-size: clamp(1rem, 1.3vw, 1.15rem);
+  max-width: 600px;
+  margin: 0 auto 30px;   /* auto left/right = horizontally centered block */
+}
+
+/* ============================================
+   6. "OUR IMPACT" CARD (home page)
+   ============================================ */
+.impact-card {
+  background-color: var(--white);
+  border: 2px solid var(--text-dark);
+  border-radius: 16px;
+  max-width: 550px;
+  margin: 0 auto 40px;
+  padding: 30px;
+  text-align: center;
+}
+
+.impact-card h2 {
+  color: var(--teal-dark);
+  font-size: clamp(1.4rem, 3vw, 2rem);
+  display: inline-block;
+  margin: 10px 0 20px;
+}
+
+.impact-divider {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: var(--teal-dark);
+}
+
+.impact-divider hr {
+  flex: 1;                       /* the line grows to fill leftover space */
+  border: none;
+  border-top: 2px solid var(--teal-dark);
+}
+
+.impact-card .stat {
+  font-weight: bold;
+  font-size: 1.15rem;
+  margin: 8px 0px;
+}
+
+/* ============================================
+   7. ACTIVITY / KIT LIST BUTTONS (Kits page)
+   ============================================ */
+.activity-list {
+  display: flex;
+  flex-direction: column;   /* stack them vertically */
+  align-items: center;
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.activity-list .btn {
+  width: 320px;
+  text-align: center;
+}
+
+
+/* ============================================
+   8. FOUNDERS GRID (About page)
+   ============================================ */
+.founders {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  flex-wrap: wrap;          /* stacks on small screens instead of squishing */
+  margin-top: 50px;
+}
+
+.founder {
+  text-align: center;
+}
+
+.founders1 {
+  font-size: 1.7rem;
+  margin-bottom: 10px
+}
+
+.founder img {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;        /* crops the photo to fill the square, no stretching */
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.founder h3 {
+  color: var(--teal-dark);
+  font-size: clamp(1.70rem, 2.5vw, 1.5rem);
+  margin-bottom: 10px;
+}
+
+/* ============================================
+   9. FOOTER (bottom of every page)
+   ============================================ */
+.footer {
+  background-color: var(--white);
+  border-top: 2px solid var(--text-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+}
+
+.footer .nav-links a {
+  color: var(--text-dark);
+}
+
+/* ============================================
+   10. RESPONSIVE (small screens / phones)
+   A "media query" only applies these rules when
+   the screen is 700px wide or less.
+   ============================================ */
+@media (max-width: 700px) {
+  .navbar,
+  .footer {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .founders {
+    gap: 40px;
+  }
+}
